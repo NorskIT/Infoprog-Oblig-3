@@ -7,9 +7,212 @@
 			
 			window.onload = oppstart;
 			
+			
+			var arr = [0,4,5,12,11,53,122,22,35,12,4,12,11,6,4,43];
+			
 			function oppstart() {
-
+				document.getElementById("btnTest").onclick = execute1;
+				execute1();
+			}
+			
+			function execute1() {
+			
 				
+				//Skriv ut arrayen
+				document.getElementById("1").innerHTML = "Vanlig array: " + arr.toString();
+				
+				//Skriv ut arrayen baklengs
+				document.getElementById("2").innerHTML = "Array baklengs: " + arr.reverse();
+				
+				execute2();
+				
+			}
+			
+			//Skriv ut annethvert tall i arrayen
+			function execute2() {
+				var res1 = [];
+				var length = arr.length;
+				
+				
+				for(var i=0;i<length;i++) {
+					if(i%2 == 0) {
+					
+					}
+					else {
+					res1 += arr[i] + ","; 
+					}
+				}
+				document.getElementById("3").innerHTML = "Annenhvert nummer i array: " +res1;
+				
+				execute3();
+			}
+			
+			
+			
+			//Skriv ut de tallene som er mindre enn 10 i arrayen
+			function execute3() {
+				
+				
+				var res2 = [];
+				for(var i=0;i<arr.length;i++) {
+					if(arr[i] <  10) {
+						res2 += arr[i] + ","; 
+					}
+					else {
+					
+					}
+				}
+				document.getElementById("4").innerHTML = "Tall mindre enn ti: " + res2;
+				
+				execute4();	
+			}
+			
+			
+			
+			//Skriv ut alle partall i arrayen
+			function execute4() {
+				
+				
+				var res3 = [];
+				
+				for(var i=0;i<arr.length;i++) {
+					if(arr[i]%2 == 0) {
+						// Zero is not a even number, as so we remove it with the line below.
+						if(arr[i] == 0) {
+						
+						}
+						else {
+							res3 += arr[i] + ",";
+						}
+					}
+					else {
+					
+					}
+				}
+				document.getElementById("5").innerHTML = "Kun partall i arrayen: " + res3;
+				
+				execute5();
+			}
+			
+			//Finn summen av arrayen
+			function execute5() {
+			
+				var sum = arr.reduce( function(a, b) {return a + b } );
+			
+				document.getElementById("6").innerHTML = "Summen av hele arrayen: " + sum;
+			
+				
+				execute6();
+			}
+			//Finn antall elementer i arrayen
+			function execute6() {
+			
+				document.getElementById("7").innerHTML = "Antall elemeneter i arrayen: " + arr.length;
+				execute7()
+			}
+			
+			
+			//Finn gjennomsnittet av arrayen
+			function execute7() {
+				
+				var sum = arr.reduce( function(a,b) {return a + b});
+				
+				var average = sum / arr.length;
+				
+				document.getElementById("8").innerHTML = "Gjennomsnittet er: " + average.toFixed(2);
+			
+				execute8()
+			}
+			//Finn summen av partall i arrayen
+			function execute8() {
+				
+				var par = [];
+				var first = true;
+				//Running a "for" to get even numbers, with push, so that when complete, it's allready a finnished array.
+				for(var i=0;i<arr.length;i++) {
+					if(arr[i]%2 == 0) {
+						if(arr[i] == 0) {
+						
+						}
+						else if (first == true) {
+							par.push(arr[i]);
+							first = false;
+						}
+						else {
+							par.push(arr[i]);
+						}
+					}
+					else {
+					
+					}
+				}
+				
+				
+				var total = par.length;
+				
+				//Getting the sum of the array.
+				var sum = par.reduce( function(a, b) {return a + b});
+				
+				//The equation of average.
+				var average = sum / total;
+				
+				document.getElementById("9").innerHTML = "Gjennomsnittet av partall er: " + average;
+				
+				execute9();
+			}
+			
+			
+			//Finn minste element 
+			function execute9() {
+			
+			//I use a high number, instead of zero, so that min will always hit an array that is lower than iteself.
+			var min = 10000000;
+				
+				for(i=0;i<arr.length;i++) {
+					if(arr[i] < min) {
+						min = arr[i];
+					}
+				}
+				document.getElementById("10").innerHTML = "Minste element er: " + min;
+				
+				execute10();
+			}
+			
+			
+			//Finn ut om en liste inneholder en bestemt verdi.
+			function execute10() {
+			//We're going to check if the array has value 4.
+				var exists = false;
+			
+				for(var i=0;i<arr.length;i++) {
+					if(arr[i] == 4 ) {
+						exists = true;
+					}
+					else {
+					}
+				}
+				document.getElementById("11").innerHTML = "Er tallet 4 i arrayen? : " + exists;
+			
+			
+			execute11();
+			}
+			
+			
+			//Finn ut hvor mange forekomster det er av en bestemt verdi.
+			function execute11() {
+			
+				var exists = 0;
+			
+				for(var i=0;i<arr.length;i++) {
+					if(arr[i] == 4 ) {
+						exists++;
+						
+					}
+					else {
+					}
+				}
+				document.getElementById("12").innerHTML = "For mange ganger forekommer tallet 4 opp i arrayen? : " + exists;
+			
 			}
 			
 		</script>
@@ -25,20 +228,61 @@
 			height: auto;
 			border: 5px solid black;
 			padding: 15px;
+			float: left;
 		
 		}
+		.test_area_2 {
+			background-color: #aaa;
+			border-top: 5px solid black;
+			border-right: 5px solid black;
+			border-bottom: 5px solid black;
+			padding: 15px;
+			float: left;
+		}
+		.test_area_3 {
+			background-color: #aaa;
+			border: 5px solid black;
+			width: 200px;
+			height: 200px;
+			padding: 15px;
+			float: left;
+		}
+		h1,h2,h3 {
+			margin: 0;
+			padding: 0;
+		}
 		
+		p {
+			border: 1px solid black;
+			background-color: white;
+			padding: 5px;
+		}
 		</style>
 	</head>
 	<body>
 		<div class="test_area">
 			<h1>Oblig 3.1</h1>
+			
+			<p id="1"></p>
+			<p id="2"></p>
+			<p id="3"></p>
+			<p id="4"></p>
+			<p id="5"></p>
+			<p id="6"></p>
+			<p id="7"></p>
+			<p id="8"></p>
+			<p id="9"></p>
+			<p id="10"></p>
+			<p id="11"></p>
+			<p id="12"></p>
+
+		</div>
+		<div class="test_area_2">
+			<h2>Kontrollpanel</h2>
 			<button type="button" id="btnTest">Test knappen!</button>
 			<input type="text" id="txtText" />
-			
-			
-			
-			
+			<p id="testp">DUMMY TEXT</p>
 		</div>
+		
 	</body>
 </html>
