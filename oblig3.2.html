@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Test</title>
+		<script>
+			
+			window.onload = oppstart;
+			
+			
+			var arrDays = [31,28,31,30,31,30,31,31,30,31,30,31];
+						// J   F  M  A  M  J  J  A  S  O  N  D
+			var arrName = ["Januar","Februar","Mars","April","Mai","Juni","Juli","August","September","Oktober","November","Desember"];
+					
+			
+			function oppstart() {
+				document.getElementById("btnShow").onclick = execute1;
+			}
+			
+			function execute1() {
+				
+				var i = document.getElementById("txtNumber").value;
+				// Subtracting a number to get correct month.
+				var num = parseInt(i) - 1;
+				
+				console.log(num);
+				
+				document.getElementById("output").innerHTML = arrName[num] + " har totalt " + arrDays[num] + " dager."
+				
+				
+			}
+			
+			
+		</script>
+		
+		
+		
+		<style>
+		
+		.test_area {
+			background-color: #aaa;
+			width: 600px;
+			min-height: 400px;
+			height: auto;
+			border: 5px solid black;
+			padding: 15px;
+			float: left;
+		
+		}
+		.test_area_2 {
+			background-color: #aaa;
+			border-top: 5px solid black;
+			border-right: 5px solid black;
+			border-bottom: 5px solid black;
+			padding: 15px;
+			float: left;
+		}
+		.test_area_3 {
+			background-color: #aaa;
+			border: 5px solid black;
+			width: 200px;
+			height: 200px;
+			padding: 15px;
+			float: left;
+		}
+		h1,h2,h3 {
+			margin: 0;
+			padding: 0;
+		}
+		
+		p {
+			border: 1px solid black;
+			background-color: white;
+			padding: 5px;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="test_area">
+			<h1>Oblig 3.2</h1>
+			<button type="button" id="btnShow">Trykk her.</button>
+			<input type="number" id="txtNumber" />
+			
+			<p id="output"></p>
+			
+
+		</div>
+		<div class="test_area_2">
+			<h2>Kontrollpanel(IKKE BRUK)</h2>
+			<button type="button" id="btnTest">Test knappen!</button>
+			<input type="text" id="txtText" />
+			<p id="testp">DUMMY TEXT</p>
+		</div>
+		
+	</body>
+</html>

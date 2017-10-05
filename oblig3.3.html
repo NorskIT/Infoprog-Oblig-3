@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Test</title>
+		<script>
+			
+			window.onload = oppstart;
+			
+			
+			var arr =  ["Hans","Ole","Nils","Olav","Per","Knut","Kari","Line","Pia"];
+			
+			/*
+				1.0 Finn et random navn.
+					1.1 Legg navn i array til vi har 3 navn.
+				2.0 Skriv ut array.
+			*/
+			
+			function oppstart() {
+				document.getElementById("btnShow").onclick = execute1;
+				execute1();
+			}
+			
+			function execute1() {
+			
+			var newarr = [];
+			var x;
+				// 1.0
+				for(var i=0;i<3;i++) {
+					y = Math.random();
+					//1.1
+					newarr.push(arr[Math.floor(y*9)]);
+				}
+				//2.0
+				document.getElementById("output").innerHTML = newarr;
+				
+			}
+			
+			
+		</script>
+		
+		
+		
+		<style>
+		
+		.test_area {
+			background-color: #aaa;
+			width: 600px;
+			min-height: 400px;
+			height: auto;
+			border: 5px solid black;
+			padding: 15px;
+			float: left;
+		
+		}
+		.test_area_2 {
+			background-color: #aaa;
+			border-top: 5px solid black;
+			border-right: 5px solid black;
+			border-bottom: 5px solid black;
+			padding: 15px;
+			float: left;
+		}
+		.test_area_3 {
+			background-color: #aaa;
+			border: 5px solid black;
+			width: 200px;
+			height: 200px;
+			padding: 15px;
+			float: left;
+		}
+		h1,h2,h3 {
+			margin: 0;
+			padding: 0;
+		}
+		
+		p {
+			border: 1px solid black;
+			background-color: white;
+			padding: 5px;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="test_area">
+			<h1>Oblig 3.2</h1>
+			<button type="button" id="btnShow">Random navn!</button>
+			
+			<p id="output"></p>
+			
+
+		</div>
+		<div class="test_area_2">
+			<h2>Kontrollpanel(IKKE BRUK)</h2>
+			<button type="button" id="btnTest">Test knappen!</button>
+			<input type="text" id="txtText" />
+			<p id="testp">DUMMY TEXT</p>
+		</div>
+		
+	</body>
+</html>
