@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Test</title>
+		<script>
+			
+			window.onload = oppstart;
+			
+			
+			var count = [0,0,0,0,0,0,0,0,0,0];
+			
+			function oppstart() {
+				document.getElementById("btnShow").onclick = execute1;
+				
+				document.addEventListener("click", btnAdd);
+				
+				for(x=9;x>-1;x--) {
+					var btn = document.createElement("button");
+					var txt = document.createTextNode(x);
+					var div = document.createElement("div");
+					btn.setAttribute("value",x+",");
+					btn.setAttribute("id","btn"+x);
+					btn.appendChild(txt);
+					if(x%3==0) {
+						document.getElementById("buttons").appendChild(div);
+						document.getElementById("buttons").appendChild(btn);
+					} 
+					else {
+						document.getElementById("buttons").appendChild(btn);
+					}
+				}
+				
+			}
+			//Add's numbers from buttons to input line.
+			function btnAdd(event) {
+				var i = event.target.value;
+				document.getElementById("txtNumber").value += i;
+			}
+			//This is where we create the graphs.
+			function execute1() {
+			
+				count = [0,0,0,0,0,0,0,0,0,0]
+				var input = document.getElementById("txtNumber").value;
+				var output = input.split(",");
+				for(i=0;i<output.length;i++){
+					count[output[i]]++;
+				}
+				document.getElementById("arrList").innerHTML = "";
+				document.getElementById("output").innerHTML  = "";
+				document.getElementById("output2").innerHTML = "Slik ser arrayen ut etter den har blitt telt: " + count; + "<br \">" + "<br \">";
+				
+				for(j=0;j<count.length;j++) {
+					document.getElementById("output").innerHTML += "<li> Vi telte: " + count[j] + " av tallet " + j;
+				
+				}
+				
+				for(x=0;x<count.length;x++) {
+				
+					var lengthX = (count[x] * 50)
+					
+					document.getElementById("arrList").innerHTML += "<p id=\"line" + x+ "\" >" + x +"</p>"
+					document.getElementById("line"+x+"").style.backgroundColor = "red";
+					document.getElementById("line"+x+"").style.display = "inline-block";
+					document.getElementById("line"+x+"").style.marginRight = "5px";
+					document.getElementById("line"+x+"").style.width = "25px";
+					document.getElementById("line"+x+"").style.textAlign= "center";
+					document.getElementById("line"+x+"").style.height = lengthX + "px";
+					document.getElementById("line"+x+"").style.border = "1px solid black";
+				}
+				
+				
+			
+			}
+			
+		</script>
+		
+		
+		
+		<style>
+		
+		.test_area {
+			background-color: #aaa;
+			width: 600px;
+			min-height: 400px;
+			height: auto;
+			border: 5px solid black;
+			padding: 15px;
+			float: left;
+		
+		}
+		.test_area_2 {
+			background-color: #aaa;
+			border-top: 5px solid black;
+			border-right: 5px solid black;
+			border-bottom: 5px solid black;
+			padding: 15px;
+			float: left;
+		}
+		.test_area_3 {
+			background-color: #aaa;
+			border: 5px solid black;
+			width: 200px;
+			height: 200px;
+			padding: 15px;
+			float: left;
+		}
+		h1,h2,h3 {
+			margin: 0;
+			padding: 0;
+		}
+		
+		.textBackground {
+			border: 1px solid black;
+			background-color: white;
+			padding: 5px;
+		}
+		button {
+			width: 40px;
+			height: 40px;
+		}
+		#arrList {
+		padding: 0;
+			text-align: center;
+			background-color: #FFF;
+			border: 1px solid black;
+		}
+		.main_button {
+			width: auto;
+			height: auto;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="test_area">
+			<h1>Oblig 3.5-A</h1>
+			<button type="button" class="main_button" id="btnShow">Push da button</button>
+			<input type="text" id="txtNumber"  />
+			<div id="buttons">
+				
+			</div>
+			<div class="textBackground"><p id="output2"></p><ul id="output"></ul></div>
+			
+			<ul id="arrList">
+			
+			</ul>
+			
+
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! -->
+		<div class="test_area_2">
+			<h2>Kontrollpanel(IKKE BRUK)</h2>
+			<button type="button" class="main_button" id="btnTest">Test knappen!</button>
+			<input type="text" id="txtText" />
+				<p class="textBackground" id="testp">DUMMY TEXT</p>
+		</div>
+		<!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! -->
+	</body>
+</html>
