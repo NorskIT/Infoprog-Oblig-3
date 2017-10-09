@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Test</title>
+		<script>
+			
+			window.onload = oppstart;
+		
+			function oppstart() {
+			
+				document.getElementById("btnShow").onclick = createArrayList;
+				
+				
+			}
+			
+			function createArrayList() {
+				document.getElementById("output2").style.display = "block";
+				//Henter ut teksten.
+				var text2 = document.getElementById("txtArea").value;
+				
+				//Gjør om teksten til uppercase så ikke scriptet skiller mellom to like ord.
+				var text = text2.toUpperCase();
+				
+				//Splitter teksten på space, slik at vi en array med alle ordene.
+				var oldArrRaw = text.split(" ");
+				
+				//Sorterer ordene alfabetisk.
+				var oldArr = oldArrRaw.sort();
+				
+				
+				var count = 0;
+				var last;
+				var first = true;
+				var highNumber = 0;
+				var highWord;
+				var finnishArr = [];
+				console.log(oldArr);
+				
+				
+				//En liten løkke for å bli kvitt alle punktum, kommaer og rare symboler.
+				for(x=0;x<oldArr.length;x++){
+					oldArr[x] = oldArr[x].replace(/\W/g,""); //
+				}
+				
+				console.log(oldArr);
+				
+				//Løkke for å telle ordene.
+				for(var i=0;i < oldArr.length+1;i++) {
+					//vis telleren er lavere enn highNumber, så 
+					if(count > highNumber) {
+						//gjør highNumber til count, gjør highWord til oldArr[i].
+						highNumber = count;
+						highWord = oldArr[i-1];
+						//Da sparer vi på den arrayen med høyest verdi.
+					}
+					//Fail safe om "" skulle komme i arrayen.
+					if(oldArr[i] == "") {
+						i++;
+						last = 1;
+					}
+					//Vi må definere at arrayens teller skal være et nummer, altså last = 0. Dette skjer bare på aller første ord.
+					else if(first) {
+						last = 1;
+						first = false;
+						
+					}
+					//vis i == last, så legg på en pluss på count.
+					if(oldArr[i] == oldArr[last]) {
+						count++;
+						last = i;
+						
+					}
+					//Print ut ordet med count.
+					else {
+					
+						//DETTE ER BARE NOEN DUMMY TEKSTER, SPART FOR MIN EGEN DEL.
+						//document.getElementById("output2").innerHTML += oldArr[i-1] + count + "<br \">";
+						//document.getElementById("output2").innerHTML += "<span style=\" width:"+((5*count)+350)+"px; \">"+ "Ordet: \" <strong>" + oldArr[i-1] + "</strong>\" oppstod: <strong>" + count + "</strong> gang(er)" + "</span>" + "<br \">";
+						
+						
+						document.getElementById("output2").innerHTML += "<span class=\"list\"; > Ordet: "+ oldArr[i-1] + "</span>" + "<span style=\" width:"+((10*count)+5)+"px; \">" + "<strong>" + count + "</strong></span><div class=\"break\" ></div>";
+						finnishArr[oldArr[i-1]] = [count];
+						
+						//Resetter telleren og gjør var last til i.
+						count = 1;
+						last = i;
+					}	
+				}
+				//Printer ut ordet med den høyeste verdien(count).
+				document.getElementById("topWord").innerHTML = "Ordet: \"" + highWord + "\" ble telt flest ganger. Det ble telt: " + highNumber + " ganger";
+			
+			}
+			
+			
+		</script>
+		
+		
+		
+		<style>
+		
+		.test_area {
+			background-color: #aaa;
+			width: auto;
+			min-height: 400px;
+			height: auto;
+			border: 5px solid black;
+			padding: 15px;
+			float: left;
+		
+		}
+		.test_area_2 {
+			background-color: #aaa;
+			border-top: 5px solid black;
+			border-right: 5px solid black;
+			border-bottom: 5px solid black;
+			padding: 15px;
+			float: left;
+			display: none;
+		}
+		.test_area_3 {
+			background-color: #aaa;
+			border: 5px solid black;
+			width: 200px;
+			height: 200px;
+			padding: 15px;
+			float: left;
+		}
+		h1,h2,h3 {
+			margin: 0;
+			padding: 0;
+		}
+		
+		#output2 {
+			display: none;
+			padding-left: 0;
+			padding-top: 25px;
+		}
+		.textBackground, {
+			border: 1px solid black;
+			background-color: black;
+			padding: 5px;
+			width: 350px;
+		}
+		#btnShow {
+			float: left;
+		}
+		.main_button {
+			width: auto;
+			height: auto;
+		}
+		#txtArea {
+			width: 300px;
+			height: 150px;
+		}
+		span {
+			background: cyan;
+			display: block;
+			border: 3px solid black;
+			color: black;
+			margin-left: 0;
+			float: left;
+		}
+		.list {
+			background-color: black;
+			color: white;
+			border: 3px solid black;
+			width: 225px;
+			float: left;
+			
+		}
+		#topWord {
+			background-color: white;
+			margin-top: 15px;
+			border: 1px solid black;
+		}
+		.break {
+			height: 26px;
+			display: block;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="test_area">
+			<h1>Oblig 3.5-C</h1>
+			<button type="button" class="main_button" id="btnShow">Push da button</button>
+			<textarea type="text" id="txtArea" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut rhoncus ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam ornare rhoncus nisl quis porttitor. Quisque id neque eget nisl interdum ullamcorper quis egestas nibh. Donec non enim sem. Proin tortor ligula, gravida vitae aliquam sit amet, rhoncus vel ligula. Quisque ultrices molestie tortor sit amet posuere. Sed aliquet sem vitae erat pretium mollis. Pellentesque et nunc massa. Quisque consequat mauris eget erat tempor aliquam. Nunc sagittis lacus sit amet turpis lobortis, et tristique velit finibus.
+
+Sed auctor quam sit amet tellus dignissim convallis id et orci. Praesent ultrices scelerisque tellus nec rhoncus. Mauris eu justo vitae nibh placerat bibendum eu in lorem. Donec ac velit imperdiet urna dapibus mattis. Maecenas a magna ligula. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum pellentesque eu ante sit amet auctor. Duis eget lacus ut leo pharetra pulvinar non eu nisl. Ut vitae efficitur mauris. Vestibulum id mauris dolor. In et metus porttitor, euismod augue id, feugiat neque. Cras sed odio pulvinar, pulvinar massa ac, consequat ipsum. Praesent imperdiet fringilla viverra. Curabitur eu maximus diam. Maecenas ut tellus pretium, facilisis sem et, convallis purus.
+
+Morbi bibendum interdum condimentum. Donec luctus congue volutpat. Nulla ante sem, bibendum a eros vel, consectetur hendrerit mauris. In hac habitasse platea dictumst. Ut vehicula rutrum lectus in tempor. Quisque vitae elementum odio. Quisque id tellus sodales, luctus nisl eu, hendrerit nunc. Donec auctor eros vel nibh volutpat vehicula. Morbi non bibendum mi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam turpis mi, consequat ut quam ut, feugiat pulvinar est. Quisque neque sapien, sollicitudin sed nunc id, bibendum feugiat dolor.
+
+Sed ex nisi, commodo sit amet eleifend in, blandit eu nibh. Donec convallis leo eu cursus tristique. Aliquam vulputate vel ex ut fringilla. Curabitur mattis ligula a augue lacinia imperdiet. Nullam facilisis justo a lorem lobortis efficitur. Sed a arcu tincidunt, ultricies turpis eget, faucibus dolor. Pellentesque sed justo facilisis, suscipit libero suscipit, laoreet sapien. Cras sit amet magna id nibh faucibus pellentesque quis eu sem. Pellentesque sapien mi, varius non consectetur sit amet, blandit in augue.
+
+Mauris egestas nulla non elit fermentum, at bibendum quam feugiat. Donec congue magna nec dolor rhoncus, in eleifend ipsum gravida. Aenean iaculis mauris vitae enim malesuada faucibus. Mauris et justo cursus, ornare mauris a, iaculis diam. Nam eleifend efficitur tempus. Proin tristique felis eget auctor maximus. Ut hendrerit elementum scelerisque. </textarea>
+			<div id="topWord"></div>
+			<div id="output2" class="textBackground"></div>
+			
+			<ul id="arrList">
+			
+			</ul>
+			
+
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! -->
+		<div class="test_area_2">
+			<h2>Kontrollpanel(IKKE BRUK)</h2>
+			<button type="button" class="main_button" id="btnTest">Test knappen!</button>
+			<input type="text" id="txtText" />
+				<pclass="textBackground" id="testp">DUMMY TEXT</p>
+		</div>
+		<!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! -->
+	</body>
+</html>
