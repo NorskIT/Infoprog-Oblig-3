@@ -11,20 +11,43 @@
 			
 		
 			function oppstart() {
-				var abc = ("a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å");
-				abc = abc.split(" ");
 				
-				document.getElementById("btnShow").onclick = createArrayList;
 				
-				console.log(abc);
+				document.getElementById("txtArea").onkeyup = createArrayList;
+				
+				
 			}
 			
 			function createArrayList() {
 				
+				var abc = "a b c d e f g h i j k l m n o p q r s t u v w x y z æ ø å";
+				abc = abc.split(" ");
+				
+				var text = document.getElementById("txtArea").value;
+				text = text.toLowerCase();
+				text = text.split("");
+				console.log(text);
+				var res = "";
+				document.getElementById("output").innerHTML = "";
+				
+				
+				for(x=0;x<text.length;x++) {
+					if(text[x] == " ") {
+						text[x] = "<img src=\"./abc/blank.jpg\" alt=\"mellomrom\" height=\"50px\" />";
+						res += text[x];
+					} 
+					else {
+						text[x] = "<img src=\"./abc/tekst" + text[x] + ".jpg\" alt=\"BOKSTAC\" height=\"50px\" width=\"37,5px\" />";
+						res += text[x];
+					}
+				}
+				document.getElementById("output").innerHTML += res;
+				
+				
 				var inputRaw = document.getElementById("txtArea").value;
 				var input = inputRaw.split("")
 				
-				
+				console.log(abc);
 				
 			}
 			
@@ -87,11 +110,11 @@
 	</head>
 	<body>
 		<div class="test_area">
-			<h1>Oblig 3.5-A</h1>
+			<h1>Oblig 3.6-A</h1>
 			<button type="button" class="main_button" id="btnShow">Push da button</button>
-			<textarea type="text" id="txtArea" >hei du hei du hei du hei du hei du hei du hei du</textarea>
+			<textarea type="text" id="txtArea" placeholder="Kun bokstaver fra A-Å" ></textarea>
 			
-			<div class="textBackground"><p id="output2"></p><ul id="output"></ul></div>
+			<div class="textBackground"><p id="output"></div>
 			
 			<ul id="arrList">
 			
@@ -105,15 +128,5 @@
 		
 		
 		
-		
-		
-		<!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! -->
-		<div class="test_area_2">
-			<h2>Kontrollpanel(IKKE BRUK)</h2>
-			<button type="button" class="main_button" id="btnTest">Test knappen!</button>
-			<input type="text" id="txtText" />
-				<p class="textBackground" id="testp">DUMMY TEXT</p>
-		</div>
-		<!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! -->
 	</body>
 </html>

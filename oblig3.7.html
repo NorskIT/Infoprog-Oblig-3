@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Test</title>
+		<script>
+			
+			window.onload = oppstart;
+			
+			
+			
+		
+			function oppstart() {
+				document.getElementById("btnShow").onclick = hentVar;
+				var x = false;
+			}
+			
+			function hentVar(){
+				var fra = parseInt(document.getElementById("txtFra").value);
+				var til = parseInt(document.getElementById("txtTil").value);
+				var tall = parseInt(document.getElementById("txtTall").value);
+				tallMellom(tall,fra,til);
+				
+				console.log(x);
+				
+				
+			
+			
+			}
+			
+			function tallMellom(tall,fra,til){
+			
+				
+			
+				if(fra < tall && tall < til){
+				
+					console.log("true");
+					x = true;
+					return x;
+				}
+				else {
+					console.log("false");
+					x = false;
+					return x;
+				}
+			
+			}
+			
+		</script>
+		
+		
+		
+		<style>
+		
+		input {
+			border: 2px solid black;
+		}
+		
+		</style>
+	</head>
+	<body>
+		<div class="test_area">
+			Fra<input id="txtFra" type="number" />
+			Til<input id="txtTil" type="number" />
+			Tall<input id="txtTall" type="number" />
+			<button type="button" id="btnShow">Vis</button>
+			<div id="output"></div>
+			
+		</div>
+		
+		
+		
+		
+		
+		
+	</body>
+</html>
