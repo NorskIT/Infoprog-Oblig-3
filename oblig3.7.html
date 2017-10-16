@@ -32,16 +32,20 @@
 			function tallMellom(tall,fra,til){
 			
 				
+				document.getElementById("output").innerHTML = "";
 			
 				if(fra < tall && tall < til){
+				if(fra <= tall && tall <= til){
 				
 					console.log("true");
 					x = true;
+					document.getElementById("output").innerHTML = true;
 					return x;
 				}
 				else {
 					console.log("false");
 					x = false;
+					document.getElementById("output").innerHTML = false;
 					return x;
 				}
 			
@@ -53,9 +57,24 @@
 		
 		<style>
 		
+		.test_area {
+			background-color: #AAA;
+			display:inline-block;
+			width: 600px;
+			height: auto;
+			padding: 20px;
+			border: 1px solid black;
+		}
+		
 		input {
 			border: 2px solid black;
 			width: 30px;
+		}
+		.gui {
+		 width: 200px;
+		 margin: 0 auto;
+		border: 1px solid black;
+		padding: 5px;
 		}
 		
 		.test_area {

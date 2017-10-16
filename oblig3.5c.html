@@ -37,6 +37,12 @@
 				var finnishArr = [];
 				console.log(oldArr);
 				
+				console.log(oldArr[0]);
+				//Vis settning er avsluttet med space, fjern slutt-space.
+				if(oldArr[0] == "") {
+					oldArr.shift();
+				}
+				console.log(oldArr[0]);
 				
 				//En liten løkke for å bli kvitt alle punktum, kommaer og rare symboler.
 				for(x=0;x<oldArr.length;x++){
@@ -47,7 +53,8 @@
 				
 				//Løkke for å telle ordene.
 				for(var i=0;i < oldArr.length+1;i++) {
-					if(oldArr.length > 0) {
+					//Om mer enn 1 ord i array, gjør følgende kode.
+					if(oldArr.length > 1) {
 						//vis telleren er lavere enn highNumber, så 
 						if(count > highNumber) {
 							//gjør highNumber til count, gjør highWord til oldArr[i].
@@ -74,11 +81,6 @@
 						}
 						//Print ut ordet med count.
 						else {
-						
-							//DETTE ER BARE NOEN DUMMY TEKSTER, SPART FOR MIN EGEN DEL.
-							//document.getElementById("output2").innerHTML += oldArr[i-1] + count + "<br \">";
-							//document.getElementById("output2").innerHTML += "<span style=\" width:"+((5*count)+350)+"px; \">"+ "Ordet: \" <strong>" + oldArr[i-1] + "</strong>\" oppstod: <strong>" + count + "</strong> gang(er)" + "</span>" + "<br \">";
-							
 							
 							document.getElementById("output2").innerHTML += "<span class=\"list\"; > Ordet: "+ oldArr[i-1] + "</span>" + "<span style=\" width:"+((10*count)+5)+"px; \">" + "<strong>" + count + "</strong></span><div class=\"break\" ></div>";
 							finnishArr[oldArr[i-1]] = [count];
@@ -88,11 +90,14 @@
 							last = i;
 						}
 					}
+					//Vis array er ett ord, gjør denne lenken.
 					else {
+					i++;
+					
 						if(i == 1) {
 							count = 1;
-							document.getElementById("output2").innerHTML += "<span class=\"list\"; > Ordet: "+ oldArr[i] + "</span>" + "<span style=\" width:"+((10*count)+5)+"px; \">" + "<strong>" + count + "</strong></span><div class=\"break\" ></div>";
-							highWord = oldArr[i];
+							document.getElementById("output2").innerHTML += "<span class=\"list\"; > Ordet: "+ oldArr[i-1] + "</span>" + "<span style=\" width:"+((10*count)+5)+"px; \">" + "<strong>" + count + "</strong></span><div class=\"break\" ></div>";
+							highWord = oldArr[i-1];
 							highNumber = 1;
 						}
 						else {
@@ -102,7 +107,7 @@
 				}
 				//Printer ut ordet med den høyeste verdien(count).
 				document.getElementById("topWord").innerHTML += "Ordet: \"" + highWord + "\" ble telt flest ganger. Det ble telt: " + highNumber + " ganger <br />" ;
-				document.getElementById("topWord").innerHTML += "Det er totalt " + oldArr.length + " ord i settningen";
+				document.getElementById("topWord").innerHTML += "Det er totalt " + (oldArr.length) + " ord i settningen";
 			
 			}
 			
