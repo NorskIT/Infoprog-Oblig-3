@@ -31,20 +31,16 @@
 			
 			function tallMellom(tall,fra,til){
 			
-				
 				document.getElementById("output").innerHTML = "";
 			
-				if(fra < tall && tall < til){
 				if(fra <= tall && tall <= til){
 				
 					console.log("true");
-					x = true;
 					document.getElementById("output").innerHTML = true;
 					return x;
 				}
 				else {
 					console.log("false");
-					x = false;
 					document.getElementById("output").innerHTML = false;
 					return x;
 				}
