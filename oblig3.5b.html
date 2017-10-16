@@ -35,7 +35,11 @@
 			//Add's numbers from buttons to input line.
 			function btnAdd(event) {
 				var i = event.target.value;
-				document.getElementById("txtNumber").value += i;
+				if(i == undefined) {
+				} 
+				else {
+					document.getElementById("txtNumber").value += i;
+				}
 			}
 			//This is where we create the graphs.
 			function execute1() {
@@ -133,7 +137,9 @@
 	</head>
 	<body>
 		<div class="test_area">
-			<h1>Oblig 3.5-A</h1>
+			<h1>Oblig 3.5-B</h1>
+			<p>Bruk tastene for å slippe bugs.</p>
+			<p>Er også en bug med inputten som gjør at det som er i boksen dobbler seg når du trykker på inputten, har ikke klart å funner årsaken, gjerne let frem årsaken.</p>
 			<button type="button" class="main_button" id="btnShow">Push da button</button>
 			<input type="text" id="txtNumber"  />
 			<div id="buttons">
@@ -156,7 +162,7 @@
 		
 		
 		<!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! --><!-- DO NOT TOUCH! -->
-		<div class="test_area_2">
+		<!--<div class="test_area_2">
 			<h2>Kontrollpanel(IKKE BRUK)</h2>
 			<button type="button" class="main_button" id="btnTest">Test knappen!</button>
 			<input type="text" id="txtText" />

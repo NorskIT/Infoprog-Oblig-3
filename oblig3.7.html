@@ -22,6 +22,7 @@
 				tallMellom(tall,fra,til);
 				
 				console.log(x);
+				document.getElementById("output").innerHTML = tallMellom(tall,fra,til);
 				
 				
 			
@@ -54,15 +55,24 @@
 		
 		input {
 			border: 2px solid black;
+			width: 30px;
+		}
+		
+		.test_area {
+		padding: 10px;
+		height: 80px;
+		display: inline-block;
+		border: 1px solid black;
+		background: lightgrey;
 		}
 		
 		</style>
 	</head>
 	<body>
 		<div class="test_area">
-			Fra<input id="txtFra" type="number" />
-			Til<input id="txtTil" type="number" />
-			Tall<input id="txtTall" type="number" />
+			Er tallet: <input id="txtTall" type="number" />
+			 imellom tallet: <input id="txtFra" type="number" />
+			og tallet: <input id="txtTil" type="number" />
 			<button type="button" id="btnShow">Vis</button>
 			<div id="output"></div>
 			

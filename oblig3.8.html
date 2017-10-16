@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Test</title>
+		<script>
+			
+			window.onload = oppstart;
+			
+			
+			
+		
+			function oppstart() {
+				document.getElementById("btnShow").onclick = hentVar;
+			}
+			
+			function hentVar(){
+				var a = parseInt(document.getElementById("txtFra").value);
+				var b = parseInt(document.getElementById("txtTil").value);
+				
+				document.getElementById("output").innerHTML += "Pluss : " +  pluss(a,b) + " <br />";
+				document.getElementById("output").innerHTML += "Minus : " +  minus(a,b) + " <br />";
+				document.getElementById("output").innerHTML += "Gange : " +  gange(a,b);
+				
+				
+			
+			
+			}
+			
+			
+			
+			function pluss(tallA,tallB){
+				var x = 0;
+				x = tallA + tallB;
+				return x;
+			
+			}
+			
+			function minus(tallA,tallB) {
+				var y = 0;
+				y = tallA - tallB;
+				return y;
+			}
+			
+			function gange(tallA,tallB) {
+				var s = 0;
+				s = tallA * tallB;
+				return s;
+			}
+			
+		</script>
+		
+		
+		
+		<style>
+		
+		input {
+			border: 2px solid black;
+			width: 50px;
+		}
+		
+		.test_area {
+		padding: 10px;
+		height: 80px;
+		display: inline-block;
+		border: 1px solid black;
+		background: lightgrey;
+		}
+		
+		</style>
+	</head>
+	<body>
+		<div class="test_area">
+			<input id="txtFra" type="number" />
+			- / + / * <input id="txtTil" type="number" />
+			<button type="button" id="btnShow">Vis</button>
+			<div id="output"></div>
+			
+		</div>
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

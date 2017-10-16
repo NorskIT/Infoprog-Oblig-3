@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8"/>
+		<meta charset="utf-8">
 		<title>Test</title>
 		<script>
 			
@@ -18,13 +18,13 @@
 				document.getElementById("output2").style.display = "block";
 				//Henter ut teksten.
 				var text2 = document.getElementById("txtArea").value;
-				
+				console.log(text2);
 				//Gjør om teksten til uppercase så ikke scriptet skiller mellom to like ord.
 				var text = text2.toUpperCase();
-				
+				console.log(text);
 				//Splitter teksten på space, slik at vi en array med alle ordene.
 				var oldArrRaw = text.split(" ");
-				
+				console.log(oldArrRaw);
 				//Sorterer ordene alfabetisk.
 				var oldArr = oldArrRaw.sort();
 				
@@ -47,48 +47,62 @@
 				
 				//Løkke for å telle ordene.
 				for(var i=0;i < oldArr.length+1;i++) {
-					//vis telleren er lavere enn highNumber, så 
-					if(count > highNumber) {
-						//gjør highNumber til count, gjør highWord til oldArr[i].
-						highNumber = count;
-						highWord = oldArr[i-1];
-						//Da sparer vi på den arrayen med høyest verdi.
-					}
-					//Fail safe om "" skulle komme i arrayen.
-					if(oldArr[i] == "") {
-						i++;
-						last = 1;
-					}
-					//Vi må definere at arrayens teller skal være et nummer, altså last = 0. Dette skjer bare på aller første ord.
-					else if(first) {
-						last = 1;
-						first = false;
+					if(oldArr.length > 0) {
+						//vis telleren er lavere enn highNumber, så 
+						if(count > highNumber) {
+							//gjør highNumber til count, gjør highWord til oldArr[i].
+							highNumber = count;
+							highWord = oldArr[i-1];
+							//Da sparer vi på den arrayen med høyest verdi.
+						}
+						//Fail safe om "" skulle komme i arrayen.
+						if(oldArr[i] == "") {
+							i++;
+							last = 1;
+						}
+						//Vi må definere at arrayens teller skal være et nummer, altså last = 0. Dette skjer bare på aller første ord.
+						else if(first) {
+							last = 1;
+							first = false;
+							
+						}
+						//vis i == last, så legg på en pluss på count.
+						if(oldArr[i] == oldArr[last]) {
+							count++;
+							last = i;
+							
+						}
+						//Print ut ordet med count.
+						else {
 						
+							//DETTE ER BARE NOEN DUMMY TEKSTER, SPART FOR MIN EGEN DEL.
+							//document.getElementById("output2").innerHTML += oldArr[i-1] + count + "<br \">";
+							//document.getElementById("output2").innerHTML += "<span style=\" width:"+((5*count)+350)+"px; \">"+ "Ordet: \" <strong>" + oldArr[i-1] + "</strong>\" oppstod: <strong>" + count + "</strong> gang(er)" + "</span>" + "<br \">";
+							
+							
+							document.getElementById("output2").innerHTML += "<span class=\"list\"; > Ordet: "+ oldArr[i-1] + "</span>" + "<span style=\" width:"+((10*count)+5)+"px; \">" + "<strong>" + count + "</strong></span><div class=\"break\" ></div>";
+							finnishArr[oldArr[i-1]] = [count];
+							
+							//Resetter telleren og gjør var last til i.
+							count = 1;
+							last = i;
+						}
 					}
-					//vis i == last, så legg på en pluss på count.
-					if(oldArr[i] == oldArr[last]) {
-						count++;
-						last = i;
-						
-					}
-					//Print ut ordet med count.
 					else {
-					
-						//DETTE ER BARE NOEN DUMMY TEKSTER, SPART FOR MIN EGEN DEL.
-						//document.getElementById("output2").innerHTML += oldArr[i-1] + count + "<br \">";
-						//document.getElementById("output2").innerHTML += "<span style=\" width:"+((5*count)+350)+"px; \">"+ "Ordet: \" <strong>" + oldArr[i-1] + "</strong>\" oppstod: <strong>" + count + "</strong> gang(er)" + "</span>" + "<br \">";
+						if(i == 1) {
+							count = 1;
+							document.getElementById("output2").innerHTML += "<span class=\"list\"; > Ordet: "+ oldArr[i] + "</span>" + "<span style=\" width:"+((10*count)+5)+"px; \">" + "<strong>" + count + "</strong></span><div class=\"break\" ></div>";
+							highWord = oldArr[i];
+							highNumber = 1;
+						}
+						else {
 						
-						
-						document.getElementById("output2").innerHTML += "<span class=\"list\"; > Ordet: "+ oldArr[i-1] + "</span>" + "<span style=\" width:"+((10*count)+5)+"px; \">" + "<strong>" + count + "</strong></span><div class=\"break\" ></div>";
-						finnishArr[oldArr[i-1]] = [count];
-						
-						//Resetter telleren og gjør var last til i.
-						count = 1;
-						last = i;
-					}	
+						}
+					}
 				}
 				//Printer ut ordet med den høyeste verdien(count).
-				document.getElementById("topWord").innerHTML = "Ordet: \"" + highWord + "\" ble telt flest ganger. Det ble telt: " + highNumber + " ganger";
+				document.getElementById("topWord").innerHTML += "Ordet: \"" + highWord + "\" ble telt flest ganger. Det ble telt: " + highNumber + " ganger <br />" ;
+				document.getElementById("topWord").innerHTML += "Det er totalt " + oldArr.length + " ord i settningen";
 			
 			}
 			
