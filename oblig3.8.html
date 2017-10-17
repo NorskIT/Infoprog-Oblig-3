@@ -11,41 +11,71 @@
 			
 		
 			function oppstart() {
-				document.getElementById("btnShow").onclick = hentVar;
+				document.getElementById("btnShow").onclick = doTheWork;
 			}
 			
-			function hentVar(){
-				var a = parseInt(document.getElementById("txtFra").value);
-				var b = parseInt(document.getElementById("txtTil").value);
+			function doTheWork() {
+			
+			var array = [1,2,3,4,5,6,7,8,90,320,4,23,41,234,123,53,234,768,56334,1,23,42];
+			var myNumber = parseInt(document.getElementById("myNumber").value);
+			
+			document.getElementById("utskrift1").innerHTML = "Størst tall: " + storst(array);
+			document.getElementById("utskrift2").innerHTML = "Totale summen: " + sumOfArray(array);
+			document.getElementById("utskrift3").innerHTML = "Gjennomsnittet: " + average(array);
+			document.getElementById("utskrift4").innerHTML = "Ble tallet ditt funnet?: " + datNumber(myNumber,array);
+			
+			
+			
+			
+			
+			}
+			
+			function storst(array) {
+			
+				var arr = array;
 				
-				document.getElementById("output").innerHTML += "Pluss : " +  pluss(a,b) + " <br />";
-				document.getElementById("output").innerHTML += "Minus : " +  minus(a,b) + " <br />";
-				document.getElementById("output").innerHTML += "Gange : " +  gange(a,b);
+				for(var i = 0; i<arr.length;i++) {
+					var count = 0;
+					if(count < arr[i]) {
+						count = arr[i]
+					}
+					
+				}
+				return count;
+			}
+			
+			function sumOfArray(array) {
+				var sum = 0;
+				var arr = array;
+				for(var i = 0; i<arr.length;i++) {
+					sum += arr[i];
+				}
+				return sum;
+			
+			}
+			function average(array) {
+				var sum = 0;
+				var arr = array;
+				for(var i = 0; i<arr.length;i++) {
+					sum += arr[i];
+				}
+				sum = sum / arr.length;
+				return sum;
+			
+			}
+			
+			function datNumber(myNumber,array) {
+			
+				var arr = array;
+				var found = false;
 				
-				
-			
-			
-			}
-			
-			
-			
-			function pluss(tallA,tallB){
-				var x = 0;
-				x = tallA + tallB;
-				return x;
-			
-			}
-			
-			function minus(tallA,tallB) {
-				var y = 0;
-				y = tallA - tallB;
-				return y;
-			}
-			
-			function gange(tallA,tallB) {
-				var s = 0;
-				s = tallA * tallB;
-				return s;
+				for(i = 0; i<arr.length;i++) {
+					if(myNumber === arr[i]) {
+						found = true;
+						
+					} 
+				}
+				return found;
 			}
 			
 		</script>
@@ -61,7 +91,6 @@
 		
 		.test_area {
 		padding: 10px;
-		height: 80px;
 		display: inline-block;
 		border: 1px solid black;
 		background: lightgrey;
@@ -71,10 +100,15 @@
 	</head>
 	<body>
 		<div class="test_area">
-			<input id="txtFra" type="number" />
-			- / + / * <input id="txtTil" type="number" />
-			<button type="button" id="btnShow">Vis</button>
-			<div id="output"></div>
+			<h2>Oblig 3.8</h2>
+			<p>Array: [1,2,3,4,5,6,7,8,90,320,4,23,41,234,123,53,234,768,56334,1,23,42]</p>
+			<p>Skriv inn ett tall i boksen, trykk så på knappen.</p>
+			<input id="myNumber" />
+			<button id="btnShow" type="button">Push da button</button>
+			<p id="utskrift1"></p>
+			<p id="utskrift2"></p>
+			<p id="utskrift3"></p>
+			<p id="utskrift4"></p>
 			
 		</div>
 		
