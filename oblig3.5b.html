@@ -13,7 +13,7 @@
 			function oppstart() {
 				document.getElementById("btnShow").onclick = execute1;
 				
-				document.addEventListener("click", btnAdd);
+				document.getElementById("buttons").addEventListener("click", btnAdd);
 				
 				for(x=9;x>-1;x--) {
 					var btn = document.createElement("button");
@@ -36,7 +36,9 @@
 			function btnAdd(event) {
 				var i = event.target.value;
 				if(i == undefined) {
-				} 
+				}
+				else if(i < 10) {
+				}
 				else {
 					document.getElementById("txtNumber").value += i;
 				}
@@ -139,7 +141,6 @@
 		<div class="test_area">
 			<h1>Oblig 3.5-B</h1>
 			<p>Bruk tastene for å slippe bugs.</p>
-			<p>Er også en bug med inputten som gjør at det som er i boksen dobbler seg når du trykker på inputten, har ikke klart å funner årsaken, gjerne let frem årsaken.</p>
 			<button type="button" class="main_button" id="btnShow">Push da button</button>
 			<input type="text" id="txtNumber"  />
 			<div id="buttons">
